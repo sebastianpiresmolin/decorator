@@ -42,8 +42,4 @@ public abstract class BaseDiscount implements Discount {
 
     protected abstract double calculateDiscount(Product product);
 
-    @Override
-    public void setNextDiscount(Discount nextDiscount) {
-        this.nextDiscount = nextDiscount;
-    }
 }
