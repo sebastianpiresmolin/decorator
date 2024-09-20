@@ -20,11 +20,25 @@ public class QuantityDiscount extends BaseDiscount {
 
     @Override
     public String getDescription(Product product, Object additionalInfo) {
-        String description = "5% Rabatt på mjölk";
-        if (nextDiscount != null) {
-            description += " " + nextDiscount.getDescription(product, additionalInfo);
+        if (!isApplicable(product)) {
+            if (nextDiscount != null) {
+                return nextDiscount.getDescription(product, additionalInfo);
+            } else {
+                return "";
+            }
         }
-        return description;
+
+        String description = "10 kr rabatt per produkt vid köp av minst 5 produkter";
+
+        if (nextDiscount != null) {
+            String nextDescription = nextDiscount.getDescription(product, additionalInfo);
+            if (!nextDescription.isEmpty()) {
+                description += " " + nextDescription;
+            }
+        }
+
+        return description.trim();
     }
+
 }
 

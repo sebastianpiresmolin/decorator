@@ -8,10 +8,9 @@ public class Main {
         Product cheese = new Product("Ost", 100.0, 3);
 
 
-        Discount fridayDiscount = new FridayDiscount(null);         // 10% rabatt på fredagar
-        Discount milkDiscount = new MilkDiscount(fridayDiscount);   // 5% rabatt på mjölk
-        Discount quantityDiscount = new QuantityDiscount(milkDiscount); // 10 kr rabatt per produkt vid minst 5 produkter
-
+        Discount fridayDiscount = new FridayDiscount(null);
+        Discount milkDiscount = new MilkDiscount(fridayDiscount);
+        Discount quantityDiscount = new QuantityDiscount(milkDiscount);
 
         System.out.println("För Mjölk:");
         double totalDiscountMilk = quantityDiscount.apply(milk, null);
@@ -30,6 +29,5 @@ public class Main {
         String cheeseDescription = quantityDiscount.getDescription(cheese, null);
         System.out.println("Total rabatt: " + totalDiscountCheese);
         System.out.println("Beskrivning: " + cheeseDescription);
-
     }
 }
