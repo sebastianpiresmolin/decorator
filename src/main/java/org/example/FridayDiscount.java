@@ -21,6 +21,10 @@ public class FridayDiscount extends BaseDiscount {
 
     @Override
     public String getDescription(Product product, Object additionalInfo) {
-        return "10% Fredagsrabatt";
+        String description = "10% Fredagsrabatt";
+        if (nextDiscount != null) {
+            description += " " + nextDiscount.getDescription(product, additionalInfo);
+        }
+        return description;
     }
 }

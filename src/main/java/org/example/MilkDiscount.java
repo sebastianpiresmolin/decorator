@@ -18,6 +18,10 @@ public class MilkDiscount extends BaseDiscount {
 
     @Override
     public String getDescription(Product product, Object additionalInfo) {
-        return "5% Rabatt på mjölk";
+        String description = "5% Rabatt på mjölk";
+        if (nextDiscount != null) {
+            description += " " + nextDiscount.getDescription(product, additionalInfo);
+        }
+        return description;
     }
 }
